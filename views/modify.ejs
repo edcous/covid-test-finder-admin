@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.1/build/global/luxon.min.js" integrity="sha256-BdqBGuaawDzMtW2Wn9ISUuYKUY/A7d5NVcj6Ix3jwv8=" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CTF Admin</title>
+    </head>
+    <body style="margin-left:1.5rem;margin-right:1.5rem;">
+        <h1>View Test Details</h1>
+        <h4>Data:</h4>
+        <div class="col-auto">
+            ID:
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="id" name="id" value="<%= stock._id %>" disabled>
+        </div>
+        <div class="col-auto">
+            <a href="/stock/modify/type?id=<%= stock._id %>">Test type:</a>
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="type" name="type" value="<%= stock.testType %>" disabled>
+        </div>
+        <div class="col-auto">
+            Store ID:
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="type" name="type" value="<%= stock.storeID %>" disabled>
+        </div>
+        <div class="col-auto">
+            Store:
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="store" name="store" value="<%= stock.store %>" disabled>
+        </div>
+        <div class="col-auto">
+            <a href="/stock/modify/link?id=<%= stock._id %>">Link:</a>
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="link" name="link" value="<%= stock.purchaseLink %>" disabled>
+        </div>
+        <div class="col-auto">
+            Stock status:
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="stock" name="stock" value="<%= stock.isInStock %>" disabled>
+        </div>
+        <div class="col-auto">
+            Last updated:
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="lu" name="lu" value="<%= stock.lastUpdated %>" disabled>
+        </div>
+        <a href="/"><button class="btn btn-primary">Go Back</button></a>
+    </body>
+</html>
