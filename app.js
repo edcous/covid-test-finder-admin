@@ -67,7 +67,7 @@ app.get('/stock/modify/type', function(req, res, next) {
 });
 async function json(){
   var JSONExport = []
-  Stock.find({}).sort({isInStock: 1, store: 1, testType: 1}).exec(function(err, s) {
+  Stock.find({}).sort({ isInStock: 1, lastUpdated: -1, testType: 1, store: 1 }).exec(function(err, s) {
     for(var i = 0; i < s.length; i++){
       JSONExport.push({
         "type": s[i].testType,
@@ -105,10 +105,11 @@ async function json(){
     })
   });
 }
-
-cron.schedule('* * * * *', () => {
+if(!process.env.dev){
+  cron.schedule('* * * * *', () => {
     json();
-})
+  })
+}
 
 app.use(express.json()) //parse incoming request body in JSON format.
 app.use('/api/stock', require('./api/stock/edit'))
