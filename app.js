@@ -12,12 +12,12 @@ const connection = require('./config/db.config.js')
 const Stock = require('./models/stock.js')
 const Type = require('./models/type.js')
 const s3 = new AWS.S3({
-  region: "us-west-004",
-  endpoint: "s3.us-west-004.backblazeb2.com",
+  region: "us-east-1",
+  endpoint: "us-east-1.linodeobjects.com",
   apiVersion: "2006-03-01",
   credentials: new AWS.Credentials({
-    accessKeyId: '004c946a0cc066e0000000001',
-    secretAccessKey: 'K004nds2Zk/jZR4mTrhKrpUZWlBN8zI'
+    accessKeyId: process.env.s3_user,
+    secretAccessKey: process.env.s3_pass
   })
 });
 
