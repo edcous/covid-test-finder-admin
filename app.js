@@ -67,7 +67,7 @@ app.get('/stock/modify/count', function(req, res, next) {
 
 app.get('/stock/modify/price', function(req, res, next) {
   Stock.findOne({ _id: req.query.id }).exec(function(err, s) {
-    res.render('count', { stock: s });
+    res.render('price', { stock: s });
   });
 });
 
