@@ -73,7 +73,7 @@ app.get('/stock/modify/type', function(req, res, next) {
 });
 async function json(){
   var JSONExport = []
-  Stock.find({}).sort({ isInStock: 1, lastUpdated: -1, pricePer: 1, testType: 1, store: 1 }).exec(function(err, s) {
+  Stock.find({}).sort({ isInStock: 1, pricePer: 1, lastUpdated: -1, testType: 1, store: 1 }).exec(function(err, s) {
     for(var i = 0; i < s.length; i++){
       JSONExport.push({
         "type": s[i].testType,
