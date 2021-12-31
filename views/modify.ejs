@@ -47,6 +47,18 @@
             <input class="form-control mb-4" type="text" id="stock" name="stock" value="<%= stock.isInStock %>" disabled>
         </div>
         <div class="col-auto">
+            <a href="/stock/modify/count?id=<%= stock._id %>">Count:</a>
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="count" name="count" value="<%= stock.count %>" disabled>
+        </div>
+        <div class="col-auto">
+            Price:
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="count" name="count" value="<%= stock.pricePer %>" disabled>
+        </div>
+        <div class="col-auto">
             Last updated:
         </div>
         <div class="col-md-4">
