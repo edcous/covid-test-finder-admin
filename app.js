@@ -114,10 +114,15 @@ async function json(){
     })
   });
 }
+
+async function cronEmail(){
+  await axios.get('https://tickets.ilvaccine.org/system/cron/5127d95dcc0137b58973751aa8644b6f')
+  console.log('cron done')
+}
 if(!process.env.dev){
   cron.schedule('* * * * *', () => {
     json();
-    await axios.get('https://tickets.ilvaccine.org/system/cron/5127d95dcc0137b58973751aa8644b6f')
+    cronEmail();
   })
 }
 
