@@ -7,6 +7,7 @@ const {gzip, ungzip} = require('node-gzip');
 const fs = require('fs');
 const timer = ms => new Promise(res => setTimeout(res, ms))
 const cron = require('node-cron');
+const axios = require('axios');
 
 const connection = require('./config/db.config.js')
 const Stock = require('./models/stock.js')
@@ -116,6 +117,7 @@ async function json(){
 if(!process.env.dev){
   cron.schedule('* * * * *', () => {
     json();
+    await axios.get('https://tickets.ilvaccine.org/system/cron/5127d95dcc0137b58973751aa8644b6f')
   })
 }
 
