@@ -17,10 +17,16 @@
             <input class="form-control mb-4" type="text" id="id" name="id" value="<%= stock._id %>" disabled>
         </div>
         <div class="col-auto">
-            <a href="/stock/modify/type?id=<%= stock._id %>">Test type:</a>
+            <a href="/stock/modify/type?id=<%= stock._id %>">Test name:</a>
         </div>
         <div class="col-md-4">
             <input class="form-control mb-4" type="text" id="type" name="type" value="<%= stock.testType %>" disabled>
+        </div>
+        <div class="col-auto">
+            <a href="/stock/modify/testType?id=<%= stock._id %>">Test type:</a>
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="type1" name="type1" value="<%= stock.type %>" disabled>
         </div>
         <div class="col-auto">
             Store ID:

@@ -12,6 +12,7 @@ const axios = require('axios');
 const connection = require('./config/db.config.js')
 const Stock = require('./models/stock.js')
 const Type = require('./models/type.js')
+const testType = require('./models/testType.js')
 const s3 = new AWS.S3({
   region: "us-east-1",
   endpoint: "us-east-1.linodeobjects.com",
@@ -42,7 +43,9 @@ connection.on('error', () => console.log('Error with DB'))
 app.get('/', function(req, res, next) {
   Stock.find({}).sort({store: 1, testType: 1}).exec(function(err, s) {
     Type.find({}).sort({name: 1}).exec(function(err, t) {
-      res.render('index', { stock: s, type: t });
+      testType.find({}).sort({name: 1}).exec(function(err, tt) {
+        res.render('index', { stock: s, type: t, tt: tt });
+      });
     });
   });
 });
@@ -78,6 +81,14 @@ app.get('/stock/modify/type', function(req, res, next) {
     });
   });
 });
+
+app.get('/stock/modify/testType', function(req, res, next) {
+  Stock.findOne({ _id: req.query.id }).exec(function(err, s) {
+    testType.find({}).sort({name: 1}).exec(function(err, t) {
+      res.render('testType', { stock: s, type: t });
+    });
+  });
+});
 async function json(){
   var JSONExport = []
   Stock.find({}).sort({ isInStock: 1, pricePer: 1, lastUpdated: -1, testType: 1, store: 1 }).exec(function(err, s) {
@@ -90,6 +101,7 @@ async function json(){
         "updateTime": s[i].lastUpdated,
         "price": s[i].pricePer,
         "count": s[i].count,
+        "testType": s[i].testType
       })
     }
     var jsonE = JSON.stringify(JSONExport);
@@ -137,6 +149,8 @@ app.use('/api/stock', require('./api/stock/edit'))
 app.use('/api/stock', require('./api/stock/remove'))
 app.use('/api/type', require('./api/type/create'))
 app.use('/api/type', require('./api/type/delete'))
+app.use('/api/testType', require('./api/testType/create'))
+app.use('/api/testType', require('./api/testType/delete'))
 
 app.listen(port, () => {
   console.log('App listening at ' + process.env.url)

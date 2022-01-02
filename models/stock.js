@@ -27,6 +27,9 @@ var stockSchema = new mongoose.Schema({
   },
   count: {
     type: Number
+  },
+  type: {
+    type: String
   }
 });
 
