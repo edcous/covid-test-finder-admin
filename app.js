@@ -101,7 +101,7 @@ async function json(){
         "updateTime": s[i].lastUpdated,
         "price": s[i].pricePer,
         "count": s[i].count,
-        "testType": s[i].testType
+        "testType": s[i].type
       })
     }
     var jsonE = JSON.stringify(JSONExport);
