@@ -74,6 +74,12 @@ app.get('/stock/modify/price', function(req, res, next) {
   });
 });
 
+app.get('/stock/modify/notes', function(req, res, next) {
+  Stock.findOne({ _id: req.query.id }).exec(function(err, s) {
+    res.render('notes', { stock: s });
+  });
+});
+
 app.get('/stock/modify/type', function(req, res, next) {
   Stock.findOne({ _id: req.query.id }).exec(function(err, s) {
     Type.find({}).sort({name: 1}).exec(function(err, t) {

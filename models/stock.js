@@ -30,6 +30,9 @@ var stockSchema = new mongoose.Schema({
   },
   type: {
     type: String
+  },
+  notes:{
+    type: String
   }
 });
 

@@ -70,6 +70,12 @@
         <div class="col-md-4">
             <input class="form-control mb-4" type="text" id="lu" name="lu" value="<%= stock.lastUpdated %>" disabled>
         </div>
+        <div class="col-auto">
+            <a href="/stock/modify/notes?id=<%= stock._id %>">Notes:</a>
+        </div>
+        <div class="col-md-4">
+            <input class="form-control mb-4" type="text" id="Notes" name="Notes" value="<%= stock.notes %>" disabled>
+        </div>
         <a href="/"><button class="btn btn-primary">Go Back</button></a>
     </body>
 </html>
