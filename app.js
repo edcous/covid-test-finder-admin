@@ -102,6 +102,7 @@ async function json(){
         "price": s[i].pricePer,
         "count": s[i].count,
         "testType": s[i].type,
+        "notes": s[i].notes,
         "id": s[i]._id
       })
     }
